@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
 	end
 
 	def create
-		Team.create(name: params[:name])
+		Team.create(team_params)
 		render_teams
 	end
 
@@ -18,5 +18,9 @@ class TeamsController < ApplicationController
 	private
 		def render_teams
 			render :json => Team.all
+		end
+
+		def team_params
+			params.require(:team).permit(:name)
 		end
 end
