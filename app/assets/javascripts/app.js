@@ -1,6 +1,6 @@
 var app = angular.module('nbaApp', ['ngRoute']);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $httpProvider) {
 	$routeProvider
 		.when("/partial1", {
 			templateUrl: "/partials/partial1.html",
@@ -10,6 +10,7 @@ app.config(function($routeProvider) {
 			templateUrl: "/partials/partial2.html",
 			controller: "teamsController"
 		})
+	$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 });
 
 // ------------------------------------- FACTORIES ------------------------------------- //
@@ -60,10 +61,10 @@ app.controller("playersController", function($scope, playerFactory){
 		$scope.players = json;
 	})
 	$scope.createPlayer = function(){
+		console.log($scope.newPlayer);
 		playerFactory.create($scope.newPlayer, function(json){
 			$scope.players = json;
 			$scope.newPlayer = {};
-
 		});
 	}
 	$scope.deletePlayer = function(playerId){
