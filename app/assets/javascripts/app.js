@@ -69,12 +69,19 @@ app.factory("associationFactory", function($http){
 })
 
 // ------------------------------------- CONTROLLERS ------------------------------------- //
-app.controller("playersController", function($scope, playerFactory){
+app.controller("playersController", function($scope, playerFactory, teamFactory){
+	$scope.newPlayer = {
+		player: {}
+	};
+
 	playerFactory.index(function(json){
 		$scope.players = json;
 	})
+	teamFactory.index(function(json){
+		$scope.teams = json;
+		$scope.newPlayer.player.team_id = $scope.teams[0].id;
+	})
 	$scope.createPlayer = function(){
-		console.log($scope.newPlayer);
 		playerFactory.create($scope.newPlayer, function(json){
 			$scope.players = json;
 			$scope.newPlayer = {};
@@ -104,7 +111,7 @@ app.controller("teamsController", function($scope, teamFactory){
 	}
 })
 
-app.controller("associationsController", function($scope, teamFactory, playerFactory, associationFactory) {
+app.controller("associationsController", function($scope, teamFactory, associationFactory) {
 	teamFactory.index(function(json){
 		$scope.teams = json;
 		$scope.selectedTeam = $scope.teams[0];

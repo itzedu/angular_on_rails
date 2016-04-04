@@ -14,5 +14,8 @@
 		<label>Last Name:</label>
 		<input ng-model="newPlayer.player.last_name" type="text">
 	</p>
+	<p>
+		<select ng-model="newPlayer.player.team_id" ng-options="team.id as team.name for team in teams"></select>
+	</p>
 	<input ng-click="createPlayer()" type="submit" value="Create Player">
 </div>
