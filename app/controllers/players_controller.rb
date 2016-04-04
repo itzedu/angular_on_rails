@@ -3,6 +3,9 @@ class PlayersController < ApplicationController
 		render_players
 	end
 
+	team = [{first_name: 'Carmelo', last_name: 'Anthony', team_id: 4}, {first_name: 'Kristaps', last_name: 'Porzingis', team_id: 4}, {first_name: 'Arron', last_name: 'Afflalo', team_id: 4}]
+	team.each { |t| Player.create(t) }
+
 	def create
 		Player.create(player_params)
 		render_players

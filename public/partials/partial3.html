@@ -1,0 +1,11 @@
+<div>
+	<h2>Rosters</h2>
+
+	<p>Select a team:</p>
+	<select ng-model="selectedTeam" ng-change="selectedTeamChanged()" ng-options="team.name for team in teams"></select>
+
+	<h3>Players</h3>
+	<ul>
+		<li ng-repeat="player in teamPlayers">{{player.first_name}} {{player.last_name}}</li>
+	</ul>
+</div>

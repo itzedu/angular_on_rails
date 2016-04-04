@@ -10,6 +10,10 @@ app.config(function($routeProvider, $httpProvider) {
 			templateUrl: "/partials/partial2.html",
 			controller: "teamsController"
 		})
+		.when("/partial3", {
+			templateUrl: "/partials/partial3.html",
+			controller: "associationsController"
+		})
 	$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 });
 
@@ -52,6 +56,15 @@ app.factory("teamFactory", function($http){
 		})
 	}
 	return factory;
+})
+
+app.factory("associationFactory", function($http){
+	var factory = {};
+	factory.show = function(callback, teamId){
+		$http.get("/associations/" + teamId).success(function(output){
+			callback(output);
+		})
+	}
 	return factory;
 })
 
@@ -88,5 +101,23 @@ app.controller("teamsController", function($scope, teamFactory){
 		teamFactory.delete(teamId, function(json){
 			$scope.teams = json;
 		})
+	}
+})
+
+app.controller("associationsController", function($scope, teamFactory, playerFactory, associationFactory) {
+	teamFactory.index(function(json){
+		$scope.teams = json;
+		$scope.selectedTeam = $scope.teams[0];
+
+		associationFactory.show(function(json){
+			$scope.teamPlayers = json;
+		}, $scope.selectedTeam.id)
+		
+	})
+
+	$scope.selectedTeamChanged = function() {
+		associationFactory.show(function(json){
+			$scope.teamPlayers = json;
+		}, $scope.selectedTeam.id)
 	}
 })

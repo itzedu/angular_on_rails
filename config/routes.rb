@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "teams" => "teams#index"
   post "teams" => "teams#create"
   delete "teams/:id" => "teams#destroy"
+  
+  # --------------- associations routes --------------- #
+  get "associations/:id" => "associations#show"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
