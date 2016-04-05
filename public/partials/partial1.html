@@ -1,5 +1,8 @@
 <div>
 	<h2>NBA Players</h2>
+	<div id="search">
+		<label>Search for player: <input ng-model="searchText"></label>
+	</div>
 	<table id="players" class="table">
 		<thead>
 			<tr>
@@ -10,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="player in players">
+			<tr ng-repeat="player in players | filter:searchText">
 				<td ng-bind="player.first_name"></td>
 				<td ng-bind="player.last_name"></td>
 				<td ng-bind="player.team_name"></td>

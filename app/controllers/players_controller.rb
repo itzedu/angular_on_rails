@@ -15,7 +15,7 @@ class PlayersController < ApplicationController
 
 	private
 		def render_players
-			render :json => Player.joins(:team).select(:id, :first_name, :last_name, "name as team_name")
+			render :json => Player.joins(:team).select("players.id as id", :first_name, :last_name, "name as team_name")
 		end
 
 		def player_params
