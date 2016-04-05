@@ -1,8 +1,23 @@
 <div>
 	<h2>NBA Players</h2>
-	<ul>
-		<li ng-repeat="player in players">{{ player.first_name }} {{ player.last_name }} - <button ng-click="deletePlayer(player.id)">Delete Player</button></li>
-	</ul>
+	<table id="players" class="table">
+		<thead>
+			<tr>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>NBA Team</td>
+				<td>Delete</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="player in players">
+				<td ng-bind="player.first_name"></td>
+				<td ng-bind="player.last_name"></td>
+				<td ng-bind="player.team_name"></td>
+				<td><button ng-click="deletePlayer(player.id)">Delete Player</button></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <div>
 	<h2>Add a new player</h2>
