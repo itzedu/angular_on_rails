@@ -1,7 +1,11 @@
 <div>
 	<h2>NBA Players</h2>
 	<div id="search">
-		<label>Search for player: <input ng-model="searchText"></label>
+		<h4>Search by:</h4>
+		<label>Any: <input ng-model="searchText.$"></label>
+		<label>First Name: <input ng-model="searchText.first_name"></label>
+		<label>Last Name: <input ng-model="searchText.last_name"></label>
+		<label>Team: <input ng-model="searchText.team_name"></label>
 	</div>
 	<table id="players" class="table">
 		<thead>
