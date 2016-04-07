@@ -3,7 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #search {
-	margin-bottom: 20px;
+	h2 { margin-bottom: 0}
+
+	p, label { display: inline-block; }
+
+	p {
+		font-weight: bold;
+		font-size: 18px;
+	}
 }
 
 .table {
@@ -16,9 +23,19 @@
 	}
 	
 	thead {
-		td {
-			font-weight: bold;
-		}
+		td { font-weight: bold; }
 	}
+}
 
+#player-info { margin-top: 13px; }
+
+#players, #add-player { 
+	display: inline-block; 
+	vertical-align: top;
+}
+
+#add-player {
+	margin-left: 30px;
+	
+	h2 { margin-top: 0px; }
 }

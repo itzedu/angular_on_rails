@@ -2,15 +2,15 @@ var app = angular.module('nbaApp', ['ngRoute']);
 
 app.config(function($routeProvider, $httpProvider) {
 	$routeProvider
-		.when("/partial1", {
+		.when("/players", {
 			templateUrl: "/partials/partial1.html",
 			controller: "playersController"
 		})
-		.when("/partial2", {
+		.when("/teams", {
 			templateUrl: "/partials/partial2.html",
 			controller: "teamsController"
 		})
-		.when("/partial3", {
+		.when("/associations", {
 			templateUrl: "/partials/partial3.html",
 			controller: "associationsController"
 		})
